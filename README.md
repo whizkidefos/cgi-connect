@@ -54,10 +54,10 @@ MongoDB
 
 ```
 git clone https://github.com/whizkidefos/cgi-connect.git
-cd CGIProject
+cd cgi-connect
 npm install
 node seedAdmin.js (to create a demo admin) OR
-node seed.js (to create 20 admins, 68 customers, and 134 contracts each radomly attached to a customer)
+node seed.js (to create 20 admins, 68 customers, and 134 contracts each randomly attached to a customer)
 npm start
 
 ```
