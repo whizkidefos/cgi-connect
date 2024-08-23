@@ -7,8 +7,8 @@ const methodOverride = require('method-override');
 const flash = require('connect-flash');
 const path = require('path');
 
-const connectDB = require('./config/db');
 require('dotenv').config();
+const connectDB = require('./config/db');
 
 const app = express();
 
@@ -73,7 +73,7 @@ app.use('/contracts', require('./routes/contractRoutes'));
 app.use('/auth', require('./routes/authRoutes'));
 
 // Chatbot Route
-app.use('/chatbot', require('./routes/chatbot'));
+//app.use('/chatbot', require('./routes/chatbot'));
 
 // Temporarily bypass authentication \\ This is for testing purposes only ensure to remove this code before deploying to production
 app.get('/admins/dashboard', (req, res) => {

@@ -15,7 +15,7 @@
                 <div class="col-md-6 login-right">
                     <div class="input-box">
                         <header class="form-header">Login</header>
-                        <% if (typeof error_msg !=='undefined' ) { %>
+                        <!-- <% if (typeof error_msg !=='undefined' ) { %>
                             <div class="alert alert-danger">
                                 <%= error_msg %>
                             </div>
@@ -33,7 +33,7 @@
                             <div class="alert alert-info">
                                 Please enter your email and password
                             </div>
-                        <% } %>
+                        <% } %> -->
                         <form action="/auth/login" method="POST">
                             <div class="input-field">
                                 <input type="text" id="email" name="email" class="form-control" required autocomplete="off">

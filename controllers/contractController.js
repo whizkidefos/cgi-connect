@@ -1,5 +1,6 @@
 const Contract = require('../models/Contract');
-const Customer = require('../models/Customer');
+// const Customer = require('../models/Customer');
+const { format } = require('date-fns');
 
 // Get All Contracts
 exports.getAllContracts = async (req, res) => {
@@ -12,6 +13,12 @@ exports.getAllContracts = async (req, res) => {
             .skip((perPage * page) - perPage)
             .limit(perPage)
             .exec();
+
+            // Format the dates before passing to the view
+            contracts.forEach(contract => {
+                contract.formattedStartDate = format(new Date(contract.startDate), 'MMM d, yyyy');
+                contract.formattedEndDate = format(new Date(contract.endDate), 'MMM d, yyyy');
+            });
 
         const count = await Contract.countDocuments();
 
