@@ -1,0 +1,62 @@
+<%- include('../layouts/header') %>
+
+    <section class="login-page">
+        <div class="container form-wrapper">
+            <div class="row">
+                <div class="col-md-6 side-image login-left">
+                    <img src="/images/cgi-logo.jpeg" alt="CGI Logo" />
+                    <div class="side-text">
+                        <p>
+                            To access your account with us please login with your details
+                        </p>
+                    </div>
+                </div>
+    
+                <div class="col-md-6 login-right">
+                    <div class="input-box">
+                        <header class="form-header">Login</header>
+                        <% if (typeof error_msg !=='undefined' ) { %>
+                            <div class="alert alert-danger">
+                                <%= error_msg %>
+                            </div>
+                        <% } else { %>
+                            <div class="alert alert-info">
+                                Please enter your email and password
+                            </div>
+                        <% } %>
+                    
+                        <% if (typeof success_msg !=='undefined' ) { %>
+                            <div class="alert alert-success">
+                                <%= success_msg %>
+                            </div>
+                        <% } else { %>
+                            <div class="alert alert-info">
+                                Please enter your email and password
+                            </div>
+                        <% } %>
+                        <form action="/auth/login" method="POST">
+                            <div class="input-field">
+                                <input type="text" id="email" name="email" class="form-control" required autocomplete="off">
+                                <label for="email">Email</label>
+                            </div>
+                            
+                            <div class="input-field">
+                                <input type="password" id="password" name="password" class="form-control" required>
+                                <label for="password">Password</label>
+                            </div>
+                            
+                            <div class="input-field">
+                                <button type="submit" class="cgi-btn">Login</button>
+                            </div>
+                        </form>
+    
+                        <div class="signin">
+                            <span>Don't have an account? <a href="/auth/register">Register here</a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<%- include('../layouts/footer') %>

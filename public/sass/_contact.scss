@@ -1,0 +1,121 @@
+.contact-page {
+    padding: 5rem 0;
+}
+
+.contact-details {
+    margin-top: 2rem;
+    padding: 50px 20px;
+
+    address {
+        margin: 0;
+    }
+
+    span {
+        color: $purple;
+        margin-right: 15px;
+    }
+
+    a {
+        color: $dark;
+    }
+}
+
+.contact-phone,
+.contact-email {
+    margin: 0;
+}
+
+.form-container,
+.contact-details {
+    background: white;
+}
+
+.form-container {
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.contact-details-container {
+    img {
+        width: 100%;
+    }
+}
+
+/* Chatbot Icon */
+#chatbotIcon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    cursor: pointer;
+    font-size: 2rem;
+    color: $purple;
+    background: white;
+    width: 65px;
+    height: 65px;
+    border-radius: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+}
+
+/* Chatbot Container */
+#chatbotContainer {
+    position: fixed;
+    bottom: -400px;
+    /* Start hidden */
+    right: 20px;
+    width: 300px;
+    height: 400px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: bottom 0.3s ease;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Chatbot Header */
+#chatbotHeader {
+    background-color: $purple;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+/* Chatbot Body */
+#chatbotBody {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Chatbot Input */
+#chatbotInput {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+}
+
+#chatbotInput input {
+    flex: 1;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    margin-right: 10px;
+}
+
+#chatbotInput button {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: $purple;
+    color: white;
+}

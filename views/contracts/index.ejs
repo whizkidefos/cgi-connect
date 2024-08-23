@@ -1,0 +1,127 @@
+<%- include('../layouts/header') %>
+
+<section class="contracts-page">
+    <div class="container mt-5">
+        <h2>Contracts</h2>
+    
+        <!-- Search Bar -->
+        <input type="text" id="search" class="form-control mb-3" placeholder="Search contracts...">
+    
+        <!-- Contracts Table -->
+        <table class="table table-responsive table-bordered">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Start date</th>
+                    <th>Customer</th>
+                    <th>Progress</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="contractTableBody">
+                <% contracts.forEach(contract=> { %>
+                    <tr>
+                        <td>
+                            <%= contract.title %>
+                        </td>
+                        <td>
+                            <%= contract.startDate %>
+                        </td>
+                        <td>
+                            <%= contract.customer ? contract.customer.name : 'Unassigned' %>
+                        </td>
+                        <td>
+                            <div class="progress">
+                                <div class="progress-bar bg-purple" role="progressbar" style="width: <%= contract.progress %>%;"
+                                    aria-valuenow="<%= contract.progress %>" aria-valuemin="0" aria-valuemax="100">
+                                    <%= contract.progress %>%
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <button class="btn btn-primary btn-sm bg-purple" data-bs-toggle="modal"
+                                data-bs-target="#contractModal<%= contract._id %>">
+                                View Details
+                            </button>
+                        </td>
+                    </tr>
+    
+                    <!-- Modal for Contract Details -->
+                    <div class="modal fade" id="contractModal<%= contract._id %>" tabindex="-1"
+                        aria-labelledby="contractModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="contractModalLabel">
+                                        <%= contract.title %>
+                                    </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p><strong>Title:</strong>
+                                        <%= contract.title %>
+                                    </p>
+                                    <p><strong>Description:</strong>
+                                        <%= contract.description %>
+                                    </p>
+                                    <p><strong>Customer:</strong>
+                                        <%= contract.customer ? contract.customer.name : 'Unassigned' %>
+                                    </p>
+                                    <p><strong>Progress:</strong>
+                                        <%= contract.progress %>%
+                                    </p>
+                                    <p><strong>Start Date:</strong>
+                                        <%= contract.startDate.toDateString() %>
+                                    </p>
+                                    <p><strong>End Date:</strong>
+                                        <%= contract.endDate.toDateString() %>
+                                    </p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="cgi-btn" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <% }) %>
+            </tbody>
+        </table>
+    
+        <!-- Pagination -->
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <% if (current> 1) { %>
+                    <li class="page-item">
+                        <a class="page-link" href="?page=<%= current - 1 %>">Previous</a>
+                    </li>
+                    <% } %>
+                    <% for (let i=1; i <=pages; i++) { %>
+                        <li class="page-item <%= current == i ? 'active' : '' %>">
+                            <a class="page-link" href="?page=<%= i %>">
+                                <%= i %>
+                            </a>
+                        </li>
+                    <% } %>
+                    <% if (current < pages) { %>
+                        <li class="page-item">
+                            <a class="page-link" href="?page=<%= current + 1 %>">Next</a>
+                        </li>
+                    <% } %>
+            </ul>
+        </nav>
+    </div>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    // Live search functionality
+    $('#search').on('keyup', function () {
+        let value = $(this).val().toLowerCase();
+        $('#contractTableBody tr').filter(function () {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+        });
+    });
+</script>
+
+<%- include('../layouts/footer') %>

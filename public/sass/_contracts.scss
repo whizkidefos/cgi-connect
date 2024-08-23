@@ -1,0 +1,27 @@
+.contracts-page {
+    padding: 10px 0 3rem 0;
+
+    .table th,
+    .table td {
+        padding: 1rem !important;
+        /* Improve padding */
+    }
+
+    .pagination {
+        margin: auto;
+
+        li.active {
+            border: 0;
+            a {
+                background: $purple;
+                border-color: $purple;
+                color: white;
+            }
+        }
+
+        li .page-link {
+            border-color: white;
+            color: $purple;
+        }
+    }
+}

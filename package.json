@@ -1,0 +1,44 @@
+{
+  "name": "cgi-connect",
+  "version": "1.0.0",
+  "description": "A nodeJS CRM prototype",
+  "main": "app.js",
+  "scripts": {
+    "start": "npm-run-all --parallel watch-css start-server --env-file=.env",
+    "watch-css": "sass --watch public/sass:public/css",
+    "start-server": "nodemon app.js"
+  },
+  "keywords": [
+    "NodeJS",
+    "express",
+    "sass",
+    "bootstrap",
+    "ejs",
+    "mongoDB",
+    "es6",
+    "html5"
+  ],
+  "author": "Efosa Igbinehi, Karina Romano, Aidan Smith, Amaar Azam",
+  "license": "ISC",
+  "dependencies": {
+    "@faker-js/faker": "^8.4.1",
+    "bcryptjs": "^2.4.3",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^5.1.0",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "method-override": "^3.0.0",
+    "mongoose": "^8.5.3",
+    "nodemailer": "^6.9.14",
+    "openai": "^4.56.0",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4",
+    "npm-run-all": "^4.1.5",
+    "sass": "^1.77.8"
+  }
+}

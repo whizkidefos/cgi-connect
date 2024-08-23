@@ -1,0 +1,91 @@
+.site-header {
+    background: ghostwhite;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 20px 7rem;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100px;
+    margin-bottom: 100px;
+    z-index: 100;
+
+
+    .logo {
+        width: 175px;
+        height: auto;
+    }
+
+    @media (max-width: 850px) {
+        padding: 20px 2rem;
+    }
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 500ms;
+
+    a {
+        color: $purple;
+        text-decoration: none;
+        margin-left: 20px;
+        transition: 250ms;
+
+        &:hover {
+            color: $red;
+        }
+
+        &:active {
+            color: $red;
+        }
+    }
+
+    @media (max-width: 850px) {
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        position: fixed;
+        top: 100px;
+        left: -300px;
+        z-index: 100;
+        background: ghostwhite;
+        padding: 20px 0;
+        width: 300px;
+        height: 100vh;
+
+        a {
+            margin: 10px 0;
+        }
+    }
+}
+
+nav.active {
+    left: 0;
+}
+
+.mobile-toggle {
+    display: none;
+    cursor: pointer;
+
+    span, svg {
+        color: $purple;
+        font-size: 2rem;
+    }
+
+    @media (max-width: 850px) {
+        display: block;
+    }
+}
+
+.login-cta {
+    display: flex;
+    align-items: center;
+}

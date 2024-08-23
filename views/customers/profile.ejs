@@ -1,0 +1,47 @@
+<%- include('../layouts/header') %>
+
+    <div class="container mt-5">
+        <h2>User Profile</h2>
+        <% if (typeof success_msg !=='undefined' ) { %>
+            <div class="alert alert-success">
+                <%= success_msg %>
+            </div>
+        <% } %>
+    
+        <p>Name: <%= user.name %>
+        </p>
+        <p>Email: <%= user.email %>
+        </p>
+
+        <h3>Your Contracts</h3>
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th>Contract Name</th>
+                    <th>Progress</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% user.contracts.forEach(function(contract) { %>
+                    <tr>
+                        <td>
+                            <%= contract.name %>
+                        </td>
+                        <td>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar"
+                                    style="width: <%= contract.progress %>%;"
+                                    aria-valuenow="<%= contract.progress %>" aria-valuemin="0" aria-valuemax="100">
+                                    <%= contract.progress %>%
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <% }); %>
+            </tbody>
+        </table>
+
+        <a href="/auth/logout" class="btn btn-danger">Logout</a>
+    </div>
+
+<%- include('../layouts/footer') %>

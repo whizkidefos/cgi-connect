@@ -1,0 +1,155 @@
+<%- include('../layouts/header') %>
+    <section class="customers-page">
+        <div class="container mt-5">
+            <h2 class="mb-3">Customers</h2>
+        
+            <!-- Search Bar -->
+            <input type="text" id="search" class="form-control mb-5" placeholder="Search customers...">
+        
+            <!-- Customer Table -->
+            <table class="table table-responsive table-bordered">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Industry</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="customerTableBody">
+                    <% customers.forEach(customer=> { %>
+                        <tr>
+                            <td>
+                                <%= customer.name %>
+                            </td>
+                            <td>
+                                <%= customer.email %>
+                            </td>
+                            <td>
+                                <%= customer.phone %>
+                            </td>
+                            <td>
+                                <%= customer.industry %>
+                            </td>
+                            <td>
+                                <button class="cgi-btn-small" data-bs-toggle="modal"
+                                    data-bs-target="#customerModal<%= customer._id %>">
+                                    View Details
+                                </button>
+                            </td>
+                        </tr>
+        
+                        <!-- Modal for Customer Details -->
+                        <div class="modal fade" id="customerModal<%= customer._id %>" tabindex="-1"
+                            aria-labelledby="customerModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="customerModalLabel">
+                                            <%= customer.name %>
+                                        </h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p><strong class="color-purple-dark">Email:</strong>
+                                            <span class="color-purple">
+                                                <%= customer.email %>
+                                            </span>
+                                        </p>
+                                        <p><strong class="color-purple-dark">Phone:</strong>
+                                            <span class="color-purple">
+                                                <%= customer.phone %>
+                                            </span>
+                                        </p>
+                                        <p><strong class="color-purple-dark">Location:</strong>
+                                            <span class="color-purple">
+                                                <%= customer.address %>
+                                            </span>
+                                        </p>
+                                        <p><strong class="color-purple-dark">Industry:</strong>
+                                            <span class="color-purple">
+                                                <%= customer.industry %>
+                                            </span>
+                                        </p>
+                                        <p><strong class="color-purple-dark">Date Registered:</strong>
+                                            <span class="color-purple">
+                                                <%= customer.date %>
+                                            </span>
+                                        </p>
+                                        <br>
+                                        <h5>Assigned Contracts</h5>
+                                        <ul>
+                                            <% customer.contracts.forEach(contract=> { %>
+                                                <li>
+                                                    <strong>
+                                                        <%= contract.title %>
+                                                    </strong>
+                                                    - <%= contract.description %>
+                                                </li>
+                                                <li>
+                                                    <strong>Start Date:</strong>
+                                                    <%= contract.startDate %>
+                                                </li>
+                                                <li>
+                                                    <strong>End Date:</strong>
+                                                    <%= contract.endDate %>
+                                                </li>
+                                                <li>
+                                                    <strong>Progress:</strong>
+                                                    <span>
+                                                        <%= contract.progress %>
+                                                    </span>
+                                                </li>
+                                                <hr>
+                                                <% }) %>
+                                        </ul>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="cgi-btn-hollow" data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <% }) %>
+                </tbody>
+            </table>
+        
+            <!-- Pagination -->
+            <nav aria-label="Page navigation" class="text-center">
+                <ul class="pagination">
+                    <% if (current> 1) { %>
+                        <li class="page-item">
+                            <a class="page-link" href="?page=<%= current - 1 %>">Previous</a>
+                        </li>
+                        <% } %>
+                            <% for (let i=1; i <=pages; i++) { %>
+                                <li class="page-item <%= current == i ? 'active' : '' %>">
+                                    <a class="page-link" href="?page=<%= i %>">
+                                        <%= i %>
+                                    </a>
+                                </li>
+                                <% } %>
+                                    <% if (current < pages) { %>
+                                        <li class="page-item">
+                                            <a class="page-link" href="?page=<%= current + 1 %>">Next</a>
+                                        </li>
+                                        <% } %>
+                </ul>
+            </nav>
+        
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Live search functionality
+        $('#search').on('keyup', function () {
+            let value = $(this).val().toLowerCase();
+            $('#customerTableBody tr').filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+            });
+        });
+    </script>
+<%- include('../layouts/footer') %>

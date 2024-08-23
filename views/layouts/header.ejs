@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CGI Connect CRM</title>
+    <link rel="shortcut icon" href="/images/cgi-logo.jpeg" type="image/x-icon">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/fontawesome.min.css">
+    <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+    
+    <header class="site-header">
+        <div class="logo">
+            <a href="/">
+                <img src="/images/CGIConnect.png" alt="CGI Connect Logo">
+            </a>
+        </div>
+    
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+            <!-- <a href="/admins/dashboard">Admin</a> -->
+
+            <% if (user && user.isAdmin) { %>
+                <a class="nav-link" href="/admins/dashboard">Admin Dashboard</a>
+            <% } else if (user) { %>
+                <a class="nav-link" href="/customers/profile">My Profile</a>
+                <a class="login-cta" href="/auth/logout">
+                    <i class="fa-solid fa-arrow-right-to-bracket"></i> &nbsp;Logout
+                </a>
+            <% } else { %>
+                <a class="login-cta" href="/auth/login">
+                    <i class="fa-solid fa-arrow-right-to-bracket"></i> &nbsp;Login
+                </a>
+            <% } %>
+        </nav>
+    
+        <div class="mobile-toggle">
+            <i class="fa-solid fa-grip-lines"></i>
+        </div>
+    </header>
+
+    <main class="main-content">

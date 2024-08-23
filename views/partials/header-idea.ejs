@@ -1,0 +1,9 @@
+<header>
+    <h1>CGI Project CRM</h1>
+    <% if (user) { %>
+        <p>Welcome, <%= user.name %></p>
+        <a href="/login/logout">Logout</a>
+    <% } else { %>
+        <a href="/login">Login</a>
+    <% } %>
+</header>

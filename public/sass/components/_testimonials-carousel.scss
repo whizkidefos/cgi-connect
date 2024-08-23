@@ -1,0 +1,60 @@
+.testimonials {
+    padding: 5rem 0;
+
+    .carousel-item {
+        // display: flex;
+        // flex-direction: column;
+        // align-items: center;
+
+
+        .carousel-initials {
+            background: $purple;
+            border-radius: 100%;
+            color: white;
+            width: 65px;
+            height: 65px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            
+            margin: 30px auto;
+            text-transform: uppercase;
+        }
+
+        p {
+            max-width: 600px;
+            text-align: center;
+            width: 98%;
+            margin: auto;
+        }
+
+        cite {
+            color: $purple;
+            font-size: 1rem;
+            font-weight: 500;
+            margin: 20px 0;
+        }
+
+        small {
+            display: block;
+            padding: 10px;
+            border-radius: 20px;
+            background: white;
+            margin: 15px 0;
+            width: 250px;
+            font-size: 10px;
+            margin: 20px auto;
+        }
+    }
+}
+
+.carousel-control-next-icon, .carousel-control-prev-icon {
+    background-color: $purple;
+    border-radius: 10px;
+
+    img {
+        width: 80%;
+    }
+}
