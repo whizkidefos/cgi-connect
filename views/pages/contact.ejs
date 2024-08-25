@@ -126,7 +126,11 @@
             
             <!-- Chatbot Container -->
             <div id="chatbotContainer">
-                <div id="chatbotHeader">CRM Connect AI</div>
+                <div id="chatbotHeader">
+                    <h5>CRM Connect AI</h5>
+                    <span id="closeChatbot">&times;</span> <!-- Close Button -->
+                    <!-- <i class="fa-solid fa-circle-xmark"></i> -->
+                </div>
                 <div id="chatbotBody">
                     <!-- Chatbot messages will appear here -->
                 </div>
@@ -134,6 +138,9 @@
                     <input type="text" id="chatbotMessage" placeholder="Ask a question..." />
                     <button id="sendMessageBtn">Send</button>
                 </div>
+                <!-- <div class="chatbot-close-icon">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                </div> -->
             </div>
             
     </section>
@@ -143,12 +150,13 @@
     <script>
         // Slide up/down chatbot when icon is clicked
         $('#chatbotIcon').on('click', function () {
-            const chatbotContainer = $('#chatbotContainer');
-            if (chatbotContainer.css('bottom') === '-400px') {
-                chatbotContainer.css('bottom', '20px');
-            } else {
-                chatbotContainer.css('bottom', '-400px');
-            }
+            console.log('chatbot icon clicked');
+            $('#chatbotContainer').css('bottom', '20px');
+        });
+
+        // Close chatbot when 'x' icon is clicked
+        $('#closeChatbot').on('click', function () {
+            $('#chatbotContainer').css('bottom', '-400px');
         });
 
         // Send message to chatbot
